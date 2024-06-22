@@ -13,7 +13,7 @@ const EmailForm = () => {
     console.log('Submitting email:', email, 'with message:', message);
 
     try {
-      const response = await axios.post('https://email-portal-server-latest.vercel.app/api/send-email', { email, message });
+      const response = await axios.post('https://email-portal-server.vercel.app/api/send-email', { email, message });
       console.log('Server response:', response);
       enqueueSnackbar('Email sent successfully!', { variant: 'success' });
     } catch (error) {
