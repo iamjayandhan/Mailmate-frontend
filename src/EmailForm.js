@@ -6,14 +6,29 @@ import './EmailForm.css';
 const EmailForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [files, setFiles] = useState([]);
+  const [showFileInput, setShowFileInput] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting email:', email, 'with message:', message);
+    setIsSubmitting(true);
+    console.log('Submitting email:', email, 'with message:', message, 'and files:', files);
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('message', message);
+    files.forEach((file) => {
+      formData.append('files', file); // Use 'files' as the field name for the backend
+    });
 
     try {
-      const response = await axios.post('https://email-portal-server.vercel.app/api/send-email', { email, message });
+      const response = await axios.post('https://mailmate-server.vercel.app/api/send-email', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       console.log('Server response:', response);
       enqueueSnackbar('Email sent successfully!', { variant: 'success' });
     } catch (error) {
@@ -31,9 +46,35 @@ const EmailForm = () => {
       }
       console.error('Error config:', error.config);
     }
+    setIsSubmitting(false);
+  };
+
+  const handleFileChange = (e) => {
+    setFiles([...files, ...e.target.files]);
+  };
+
+  const handleRemoveFile = (index) => {
+    const newFiles = files.filter((_, i) => i !== index);
+    setFiles(newFiles);
+  };
+
+  const handleCheckboxChange = (e) => {
+    setShowFileInput(e.target.checked);
+    if (!e.target.checked) {
+      setFiles([]);
+    }
+  };
+
+  const handleClearForm = () => {
+    setEmail('');
+    setMessage('');
+    setFiles([]);
+    setShowFileInput(false);
   };
 
   return (
+    <>
+    <p>MailMate</p>
     <div className="email-form">
       <form onSubmit={handleSubmit}>
         <label>
@@ -58,11 +99,49 @@ const EmailForm = () => {
             required
           />
         </label>
-        <button type="submit">Send Email</button>
+        <div className="file-attach-section">
+          <label className='label2'>
+            Attach Files
+          </label>
+          <input
+            type="checkbox"
+            className='checkbox'
+            checked={showFileInput}
+            onChange={handleCheckboxChange}
+          />
+        </div>
+        {showFileInput && (
+          <label>
+            <input
+              type="file"
+              multiple
+              onChange={handleFileChange}
+            />
+          </label>
+        )}
+        {files.length > 0 && (
+          <div className="attachments">
+            {files.map((file, index) => (
+              <div key={index} className="attachment">
+                {file.name}
+                <button type="button" onClick={() => handleRemoveFile(index)}>&times;</button>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="button-group">
+          
+          <button className="sendbtn" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send Email'}
+          </button>
+          <button type="button" onClick={handleClearForm} disabled={isSubmitting}>
+            Clear
+          </button>
+        </div>
       </form>
     </div>
+    </>
   );
 };
-
 
 export default EmailForm;

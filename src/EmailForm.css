@@ -1,59 +1,102 @@
-/* Global body styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    background-color: #333; /* Dark background color */
-    color: #fff; /* Light text color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ensure full viewport height */
-  }
-  
-  /* Container styles */
-  .email-form {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: inherit; /* Inherit body background */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .email-form input,
-  .email-form textarea {
-    width: calc(100% - 16px); /* Adjust for padding */
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-    background-color: #444; /* Dark background color for inputs */
-    color: #fff; /* Light text color */
-  }
-  
-  .email-form button {
-    margin-top: 15px;
-    padding: 10px;
-    cursor: pointer;
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none;
-    border-radius: 3px;
-    transition: background-color 0.3s ease; /* Smooth transition */
-  }
-  
-  .email-form button:hover {
-    background-color: #0056b3; /* Button hover background color */
-  }
-  
-  /* Label styles */
-  .email-form label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.email-form {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: inherit;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.email-form input,
+.email-form textarea {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  background-color: #444;
+  color: #fff;
+}
+
+.email-form button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.email-form button:hover {
+  background-color: #0056b3;
+}
+
+.email-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+.label2{
+  width: 150px;
+}
+
+.file-attach-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.sendbtn{
+  margin-right: 1rem;
+}
+
+p {
+  text-align: center; /* Center-align text */
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px; /* Adjust font size */
+  color: #ffffff; /* Set text color */
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.checkbox{
+  margin-left:-12.5rem;
+}
+
+.attachments {
+  margin: 0;
+  padding: 0;
+}
+
+.attachment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.attachment button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
