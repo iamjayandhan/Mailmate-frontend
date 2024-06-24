@@ -33,6 +33,11 @@ const EmailForm = () => {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          console.log('Upload progress:', percentCompleted);
+          // Optionally, update a progress bar or display loader based on 'percentCompleted'
+        },
       });
       console.log('Server response:', response);
       enqueueSnackbar('Email sent successfully!', { variant: 'success' });
@@ -55,7 +60,8 @@ const EmailForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setFiles([...files, ...e.target.files]);
+    const selectedFiles = Array.from(e.target.files);
+    setFiles([...files, ...selectedFiles]);
   };
 
   const handleRemoveFile = (index) => {
