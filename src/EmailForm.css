@@ -10,6 +10,15 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+.sendbtn{
+  margin-right: 1rem;
+}
+p{
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
 
 .email-form {
   width: 300px;
@@ -52,31 +61,19 @@ body {
   display: block;
   margin-bottom: 10px;
 }
-.label2{
-  width: 150px;
-}
 
-.file-attach-section {
+.label2 {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-.sendbtn{
-  margin-right: 1rem;
-}
-
-p {
-  text-align: center; /* Center-align text */
-  font-family: 'Poppins', sans-serif;
-  font-size: 40px; /* Adjust font size */
-  color: #ffffff; /* Set text color */
-  margin: 0;
+  justify-content: space-between;
+  margin-left: 12.5rem;
+  width: 13%; /* Adjust width as needed */
   margin-bottom: 10px;
 }
 
-.checkbox{
-  margin-left:-12.5rem;
+.checkbox1,
+.checkbox2 {
+  margin-left: -12.5rem; /* Adjust spacing between checkbox and label */
 }
 
 .attachments {
@@ -98,5 +95,3 @@ p {
   cursor: pointer;
   font-size: 16px;
 }
-
-
